@@ -175,7 +175,7 @@ function SignIn() {
           <Text
             style={styles.centerText} >At least 8 characters*</Text>
         </View>
-        <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('SignIn')}>
+        <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('Creation')}>
           <Text style={styles.signUpButtonText}> Continue</Text>
         </TouchableOpacity>
       </View>
@@ -198,18 +198,59 @@ function SignIn() {
     </View>
   );
 }
+
+function AccountCreated() {
+  const navigation = useNavigation();
+  return (
+    <View style={{ flex: 1, width: '100%', height: '100%' }}>
+      <Image
+        style={{
+          flex: 3,
+          width: "80%",
+          height: "80%",
+          resizeMode: 'contain',
+          alignSelf: 'center',
+
+        }}
+        source={require("./assets/AppLogo.png")}
+      />
+
+      <Text
+        style={styles.congrats}>Congratulations!
+        Welcome to Your MealSync Account!</Text>
+
+      <View style={{
+        flex: 0.3
+      }}></View>
+
+      <TouchableOpacity style={[styles.accCreButton, styles.flexOne]} onPress={() => navigation.navigate('SignIn')}>
+        <View style={{
+          flex: 0.5
+        }}></View>
+        <Text style={[styles.signUpButtonText, styles.flexOne, styles.font40]}> Continue</Text>
+        <View style={{
+          flex: 0.5
+        }}></View>
+      </TouchableOpacity>
+      <View style={{
+        flex: 0.8
+      }}></View>
+    </View >
+  )
+}
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Entry" screenOptions={{
+      <Stack.Navigator initialRouteName="Creation" screenOptions={{
         headerShown: false
       }}>
         <Stack.Screen name="Entry" component={EntryScreen} />
         <Stack.Screen name="Friends" component={Friends} options={{ name: "John" }} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Creation" component={AccountCreated} />
       </Stack.Navigator>
     </NavigationContainer >
   );
@@ -279,6 +320,18 @@ const styles = StyleSheet.create({
     paddingTop: 2,
     paddingBottom: 2,
   },
+  accCreButton: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 8,
+    backgroundColor: "#95BE93",
+    borderRadius: 10,
+    marginLeft: 100,
+    marginRight: 100,
+    flexDirection: 'column',
+  },
+
   signUpButtonText: {
     fontSize: 25,
     color: "#000000",
@@ -286,10 +339,24 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "center",
   },
+
+  font40: {
+    fontSize: 40,
+  },
   centerText: {
-    alignSelf: 'center',
+    textAlign: 'center',
   },
   signUpTitles: {
     fontSize: 20,
+  },
+  flexOne: {
+    flex: 1
+  },
+  congrats: {
+    marginLeft: 10,
+    marginRight: 10,
+    flex: 1,
+    textAlign: 'center',
+    fontSize: 35
   }
 })
