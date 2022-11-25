@@ -44,8 +44,30 @@ function LoginScreen() {
 }
 
 function signIn() {
-  return <Text>Sign Up</Text>;
+  return (
+    <SafeAreaView>
+      <Text>Sign Up</Text>
+      <Text>Username</Text>
+      <TextInput style={styles.inputText} />
+      <Text>Password</Text>
+      <TextInput style={styles.inputText} />
+      <Text>(At least 8 characters)</Text>
+      <Image style={{width: "40%", height: "10%"}} source={require("./assets/116d0e8f-2ca6-4088-ab0a-345e4c91aa4e.jpg")}/>
+      <Text>or continue with</Text>
+      <View style={styles.iconView}>
+        <Image
+          style={{ width: "25%", height: "25%" }}
+          source={require("./assets/google.png")}
+        />
+        <Image
+          style={{ width: "25%", height: "25%" }}
+          source={require("./assets/facebook.png")}
+        />
+      </View>
+    </SafeAreaView>
+  );
 }
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
