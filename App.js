@@ -48,7 +48,7 @@ function Friends() {
     </ScrollView>
   )
 }
-function LoginScreen() {
+function EntryScreen() {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -60,6 +60,7 @@ function LoginScreen() {
             height: "85%",
             resizeMode: 'contain',
             alignSelf: 'center',
+
           }}
           source={require("./assets/AppLogo.png")}
         />
@@ -68,13 +69,13 @@ function LoginScreen() {
           style={{
             flex: 1
           }}>
-          <Pressable style={styles.button} onPress={() => navigation.navigate('SignIn')}>
-            <Text style={styles.buttonText}> Login</Text>
-          </Pressable>
+          <TouchableOpacity style={styles.firstButtons} onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.firstButtonText}> Login</Text>
+          </TouchableOpacity>
 
-          <Pressable style={styles.button} onPress={() => navigation.navigate('SignIn')}>
-            <Text style={styles.buttonText}> Sign Up</Text>
-          </Pressable>
+          <TouchableOpacity style={styles.firstButtons} onPress={() => navigation.navigate('SignIn')}>
+            <Text style={styles.firstButtonText}> Sign Up</Text>
+          </TouchableOpacity>
         </View>
 
       </ImageBackground>
@@ -82,28 +83,119 @@ function LoginScreen() {
   );
 }
 
-function SignIn() {
+function Login() {
+  const navigation = useNavigation();
   return (
-    <SafeAreaView>
-      <Text>Sign Up</Text>
-      <Text>Username</Text>
-      <TextInput style={styles.inputText} />
-      <Text>Password</Text>
-      <TextInput style={styles.inputText} />
-      <Text>(At least 8 characters)</Text>
-      <Image style={{ width: "40%", height: "10%" }} source={require("./assets/116d0e8f-2ca6-4088-ab0a-345e4c91aa4e.jpg")} />
-      <Text>or continue with</Text>
-      <View style={styles.iconView}>
-        <Image
-          style={{ width: "25%", height: "25%" }}
-          source={require("./assets/google.png")}
-        />
-        <Image
-          style={{ width: "25%", height: "25%" }}
-          source={require("./assets/facebook.png")}
-        />
+    <View style={{ flex: 1, width: '100%', height: '100%' }}>
+      <Text style={{
+        color: "#000000",
+        flex: 0.4,
+        fontSize: 40,
+        alignSelf: "flex-start",
+        padding: 15,
+        marginTop: 50,
+
+      }}
+      >Login</Text>
+      <View
+        style={{
+          flex: 1
+        }}>
+        <View style={{
+          marginTop: 3,
+        }}>
+          <Text style={[styles.centerText, styles.signUpTitles]}>Username</Text>
+          <TextInput style={styles.inputText} />
+        </View>
+
+        <View style={{
+          marginTop: 10,
+          marginBottom: 3,
+        }}>
+          <Text style={[styles.centerText, styles.signUpTitles]}>Password</Text>
+          <TextInput style={styles.inputText} />
+          <Text
+            style={styles.centerText} >At least 8 characters*</Text>
+        </View>
+        <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('SignIn')}>
+          <Text style={styles.signUpButtonText}> Continue</Text>
+        </TouchableOpacity>
       </View>
-    </SafeAreaView>
+      <View style={{
+        flex: 1.1
+      }}>
+        <Text
+          style={[styles.centerText, styles.signUpTitles]}>or continue with</Text>
+        <View style={styles.horzContainer}>
+          <Image
+            style={styles.loginIcon}
+            source={require("./assets/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png")}
+          />
+          <Image
+            style={styles.loginIcon}
+            source={require("./assets/Facebook-logo-blue-circle-large-transparent-png.png")}
+          />
+        </View>
+      </View>
+    </View>
+  );
+}
+
+function SignIn() {
+  const navigation = useNavigation();
+  return (
+    <View style={{ flex: 1, width: '100%', height: '100%' }}>
+      <Text style={{
+        color: "#000000",
+        flex: 0.4,
+        fontSize: 40,
+        alignSelf: "flex-start",
+        padding: 15,
+        marginTop: 50,
+
+      }}
+      >Sign Up</Text>
+      <View
+        style={{
+          flex: 1
+        }}>
+        <View style={{
+          marginTop: 3,
+        }}>
+          <Text style={[styles.centerText, styles.signUpTitles]}>Username</Text>
+          <TextInput style={styles.inputText} />
+        </View>
+
+        <View style={{
+          marginTop: 10,
+          marginBottom: 3,
+        }}>
+          <Text style={[styles.centerText, styles.signUpTitles]}>Password</Text>
+          <TextInput style={styles.inputText} />
+          <Text
+            style={styles.centerText} >At least 8 characters*</Text>
+        </View>
+        <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('SignIn')}>
+          <Text style={styles.signUpButtonText}> Continue</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{
+        flex: 1.1
+      }}>
+        <Text
+          style={[styles.centerText, styles.signUpTitles]}>or continue with</Text>
+        <View style={styles.horzContainer}>
+          <Image
+            style={styles.loginIcon}
+            source={require("./assets/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png")}
+          />
+          <Image
+            style={styles.loginIcon}
+            source={require("./assets/Facebook-logo-blue-circle-large-transparent-png.png")}
+          />
+        </View>
+      </View>
+    </View>
   );
 }
 const Stack = createNativeStackNavigator();
@@ -111,12 +203,13 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreen" screenOptions={{
+      <Stack.Navigator initialRouteName="Entry" screenOptions={{
         headerShown: false
       }}>
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Entry" component={EntryScreen} />
         <Stack.Screen name="Friends" component={Friends} options={{ name: "John" }} />
         <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer >
   );
@@ -128,27 +221,25 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  inputText: {
-    height: 20,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    color: "black",
-  },
-  iconView: {
-    padding: 20,
+  horzContainer: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",
-    width: "50%",
-    height: "50%",
+    alignItems: "center",
   },
-  friendPic: {
-    width: 400,
-    height: 400,
-    borderRadius: 400 / 2
+  inputText: {
+    marginLeft: 20,
+    marginRight: 20,
+    borderWidth: 2,
+    padding: 10,
+    color: "black",
+    borderRadius: 10,
+    fontSize: 18,
+    color: "#000000",
+    height: 50,
+    marginBottom: 10,
   },
-  button: {
+  firstButtons: {
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 8,
@@ -161,11 +252,44 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 15
   },
-  buttonText: {
+  firstButtonText: {
     fontSize: 35,
     color: "#fff",
     fontWeight: "bold",
     alignSelf: "center",
-    font: "Helvetica"
+    justifyContent: "center",
+  },
+  loginIcon: {
+    flex: 1,
+    width: "50%",
+    height: "50%",
+    resizeMode: 'contain',
+    alignSelf: 'center',
+  },
+  signUpButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 8,
+    backgroundColor: "#95BE93",
+    borderRadius: 10,
+    marginLeft: 125,
+    marginRight: 125,
+    marginTop: 25,
+    marginBottom: 25,
+    paddingTop: 2,
+    paddingBottom: 2,
+  },
+  signUpButtonText: {
+    fontSize: 25,
+    color: "#000000",
+    fontWeight: "bold",
+    alignSelf: "center",
+    justifyContent: "center",
+  },
+  centerText: {
+    alignSelf: 'center',
+  },
+  signUpTitles: {
+    fontSize: 20,
   }
 })
