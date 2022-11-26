@@ -381,7 +381,7 @@ function Restaurant() {
         <TouchableOpacity style={styles.homeBarTouch}>
           <Image
             style={styles.homeBarIcons}
-            source={require("./assets/icons8-google-maps-old-500.png")}
+            source={require("./assets/icons8-google-maps-100.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.homeBarTouch}>
@@ -499,22 +499,30 @@ function Restaurant2() {
 
 
       <View style={{ flex: 0.5, justifyContent: "flex-end", backgroundColor: "#E3967E", flexDirection: "row" }}>
-        <Image
-          style={styles.homeBarIcons}
-          source={require("./assets/icons8-country-house-100.png")}
-        />
-        <Image
-          style={styles.homeBarIcons}
-          source={require("./assets/icons8-google-maps-old-500.png")}
-        />
-        <Image
-          style={styles.homeBarIcons}
-          source={require("./assets/icons8-friends-100.png")}
-        />
-        <Image
-          style={styles.homeBarIcons}
-          source={require("./assets/icons8-gear-100.png")}
-        />
+        <TouchableOpacity style={styles.homeBarTouch}>
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-country-house-100.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.homeBarTouch}>
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-google-maps-100.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.homeBarTouch}>
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-friends-100.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.homeBarTouch}>
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-gear-100.png")}
+          />
+        </TouchableOpacity>
       </View>
     </View >
 
@@ -654,12 +662,14 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 10,
     height: 70,
-    alignItems: 'center',
+    alignItems: "center",
+    width: 10
   },
   healthIcon: {
     height: 35,
     flex: 1,
     resizeMode: 'contain',
+    width: 35
   },
   friendIcon: {
     height: 55,
