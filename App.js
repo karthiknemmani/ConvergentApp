@@ -200,7 +200,7 @@ function SignIn() {
         </View>
       </View>
     </View>
-  );
+  )
 }
 
 function AccountCreated() {
@@ -227,7 +227,7 @@ function AccountCreated() {
         flex: 0.3
       }}></View>
 
-      <TouchableOpacity style={[styles.accCreButton, styles.flexOne]} onPress={() => navigation.navigate('SignIn')}>
+      <TouchableOpacity style={[styles.accCreButton, styles.flexOne]} onPress={() => navigation.navigate('Restaurant')}>
         <View style={{
           flex: 0.5
         }}></View>
@@ -482,18 +482,23 @@ function Restaurant2() {
 
       <View style={{ flex: 0.6 }}>
         <View style={{ flex: 1, flexDirection: "row" }}>
-          <Image
-            style={styles.chooseIcons}
-            source={require("./assets/icons8-cancel-480.png")}
-            onPress={() => navigation.navigate('Restaurant')} />
-          <Image
-            style={styles.undoIcon}
-            source={require("./assets/icons8-undo-96.png")}
-            onPress={() => navigation.navigate('Restaurant')} />
-          <Image
-            style={styles.chooseIcons}
-            source={require("./assets/icons8-checkmark-480.png")}
-            onPress={() => navigation.navigate('Restaurant2')} />
+          <TouchableOpacity style={styles.chooseIcons} onPress={() => navigation.navigate('Restaurant')}>
+            <Image
+              style={styles.chooseIcons}
+              source={require("./assets/icons8-cancel-480.png")}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.undoIcon} onPress={() => navigation.navigate('Restaurant')}>
+            <Image
+              style={styles.undoIcon}
+              source={require("./assets/icons8-undo-96.png")} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.chooseIcons} onPress={() => navigation.navigate('Restaurant')}>
+            <Image
+              style={styles.chooseIcons}
+              source={require("./assets/icons8-checkmark-480.png")}
+              onPress={() => navigation.navigate('Restaurant2')} />
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -529,12 +534,71 @@ function Restaurant2() {
   )
 }
 
+function Map() {
+  return (
+    <View style={{ flex: 1, width: '100%', height: '100%' }}>
+      <Text style={{
+        color: "#000000",
+        flex: 0.4,
+        fontSize: 40,
+        alignSelf: "flex-start",
+        marginTop: 50,
+        padding: 15
+
+      }}
+      >Places Near Me</Text>
+      <View
+        style={{
+          flexDirection: "row",
+          flex: 1,
+        }}>
+        <Image
+          style={styles.healthIcon}
+          source={require("./assets/icons8-no-gluten-100.png")}
+        />
+        <Image
+          style={styles.healthIcon}
+          source={require("./assets/icons8-vegetarian-mark-96.png")}
+        />
+        <View style={{ flex: 4 }}>
+        </View>
+      </View>
+      <View style={{ flex: 3, width: '100%', height: '100%' }}>
+        <Image
+          style={{
+            resizeMode: 'contain',
+            height: "110%",
+            alignSelf: "center",
+            marginBottom: 5
+
+          }}
+          source={require("./assets/ss.png")}
+        />
+      </View>
+      <View style={{ flex: 0.75 }}>
+      </View>
+      <View style={{ flex: 2, flexDirection: "row" }}>
+        <Image style={styles.transportIcon}
+          source={require("./assets/icons8-walking-100.png")} />
+        <Image style={styles.transportIcon}
+          source={require("./assets/icons8-car-90.png")} />
+        <Image style={styles.transportIcon}
+          source={require("./assets/icons8-bus-100.png")} />
+        <Image style={styles.transportIcon}
+          source={require("./assets/icons8-cycling-100.png")} />
+      </View>
+
+      <View style={{ flex: 0.75 }}></View>
+    </View>
+  )
+}
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Restaurant" screenOptions={{
+      <Stack.Navigator initialRouteName="Entry" screenOptions={{
         headerShown: false
       }}>
         <Stack.Screen name="Entry" component={EntryScreen} />
@@ -545,6 +609,7 @@ export default function App() {
         <Stack.Screen name="Options" component={Options} />
         <Stack.Screen name="Restaurant" component={Restaurant} />
         <Stack.Screen name="Restaurant2" component={Restaurant2} />
+        <Stack.Screen name="Map" component={Map} />
       </Stack.Navigator>
     </NavigationContainer >
   );
@@ -687,5 +752,10 @@ const styles = StyleSheet.create({
     height: "45%",
     resizeMode: 'contain',
     alignSelf: 'center',
+  },
+  transportIcon: {
+    height: 50,
+    flex: 1,
+    resizeMode: 'contain',
   }
 })
