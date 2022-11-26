@@ -142,7 +142,7 @@ function Login() {
         </View>
       </View>
     </View>
-  );
+  )
 }
 
 function SignIn() {
@@ -271,11 +271,12 @@ function Options() {
 }
 
 function Restaurant() {
+  const navigation = useNavigation();
   return (
     <View style={{ flex: 1, width: '100%', height: '100%' }}>
-      <View style={{ flex: 1 }} ></View>
+      <View style={{ flex: 0.4 }} ></View>
       <View
-        style={{ flex: 1, width: "90%", height: "50%", borderColor: "#000000", borderWidth: 5, alignSelf: "center", borderRadius: 15 }}>
+        style={{ flex: 2, width: "90%", height: "80%", borderColor: "#E3967E", borderWidth: 5, alignSelf: "center", borderRadius: 15 }}>
 
 
         <Text
@@ -302,20 +303,202 @@ function Restaurant() {
           <View style={{ flex: 1 }}></View>
           <Text style={{ color: "#000000", fontSize: 20, flex: 1.3 }}>9 minute Walk</Text>
         </View>
-        <View>
 
+        <View style={{ flex: 4.4, width: "90%", height: "100%", alignSelf: "center", borderRadius: 15, backgroundColor: "#E3967E" }}>
+          <View style={{ flex: 0.1 }}></View>
+          <Text style={{
+            marginLeft: 10,
+            marginRight: 10,
+            flex: 1,
+            textAlign: 'center',
+            fontSize: 30,
+            color: "#fff"
+          }}>Popular Menu Items: </Text>
+          <Text style={{
+            marginLeft: 30,
+            marginRight: 10,
+            flex: 1,
+            fontSize: 25,
+            color: "#fff"
+          }}>“The Chronicle” with gluten free pizza crust </Text>
+          <View style={{ flex: 0.3 }}></View>
+          <Text style={{
+            marginLeft: 30,
+            marginRight: 10,
+            flex: 1,
+            fontSize: 25,
+            color: "#fff"
+          }}>“Build Your Own” Pizza with gluten free crust </Text>
+          <View style={{ flex: 0.3 }}></View>
+          <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
+            <View style={{ flex: 0.1 }}></View>
+            <Image style={styles.friendIcon}
+              source={require("./assets/icons8-meeting-room-100.png")} />
+            <Text style={{
+              flex: 2,
+              textAlign: 'center',
+              fontSize: 15,
+              color: "#fff",
+              alignSelf: "center",
+              textDecorationLine: 'underline'
+            }}>Liked by Heather and 3 others</Text>
+          </View>
+          <View style={{ flex: 0.2 }}></View>
+        </View>
+        <View style={{ flex: 0.4 }}></View>
+      </View>
+
+      <View style={{ flex: 0.6 }}>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <TouchableOpacity style={styles.chooseIcons} onPress={() => navigation.navigate('Restaurant2')}>
+            <Image
+              style={styles.chooseIcons}
+              source={require("./assets/icons8-cancel-480.png")}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.undoIcon} onPress={() => navigation.navigate('Restaurant2')}>
+            <Image
+              style={styles.undoIcon}
+              source={require("./assets/icons8-undo-96.png")} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.chooseIcons} onPress={() => navigation.navigate('Restaurant2')}>
+            <Image
+              style={styles.chooseIcons}
+              source={require("./assets/icons8-checkmark-480.png")}
+              onPress={() => navigation.navigate('Restaurant2')} />
+          </TouchableOpacity>
         </View>
       </View>
 
 
-      <View style={{ flex: 1 }}></View>
-      <View style={{ flex: 1 }}></View>
-      <View style={{ flex: 1 }}></View>
-      <View style={{ flex: 1 }}></View>
-      <View style={{ flex: 1 }}></View>
+      <View style={{ flex: 0.5, justifyContent: "flex-end", backgroundColor: "#E3967E", flexDirection: "row" }}>
+        <TouchableOpacity style={styles.homeBarTouch}>
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-country-house-100.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.homeBarTouch}>
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-google-maps-old-500.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.homeBarTouch}>
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-friends-100.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.homeBarTouch}>
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-gear-100.png")}
+          />
+        </TouchableOpacity>
+      </View>
+    </View >
+
+  )
+}
+
+function Restaurant2() {
+  const navigation = useNavigation();
+  return (
+    <View style={{ flex: 1, width: '100%', height: '100%' }}>
+      <View style={{ flex: 0.4 }} ></View>
+      <View
+        style={{ flex: 2, width: "90%", height: "80%", borderColor: "#E3967E", borderWidth: 5, alignSelf: "center", borderRadius: 15 }}>
 
 
-      <View style={{ flex: 1, justifyContent: "flex-end", backgroundColor: "#E3967E", flexDirection: "row" }}>
+        <Text
+          style={styles.congrats}>Gyrodelicious</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            flex: 1
+          }}>
+          <View
+            style={{
+              flexDirection: "row",
+              flex: 1,
+            }}>
+            <Image
+              style={styles.healthIcon}
+              source={require("./assets/icons8-no-gluten-100.png")}
+            />
+            <Image
+              style={styles.healthIcon}
+              source={require("./assets/icons8-vegetarian-mark-96.png")}
+            />
+          </View>
+          <View style={{ flex: 1 }}></View>
+          <Text style={{ color: "#000000", fontSize: 20, flex: 1.3 }}>12 minute Walk</Text>
+        </View>
+
+        <View style={{ flex: 4.4, width: "90%", height: "100%", alignSelf: "center", borderRadius: 15, backgroundColor: "#E3967E" }}>
+          <View style={{ flex: 0.1 }}></View>
+          <Text style={{
+            marginLeft: 10,
+            marginRight: 10,
+            flex: 1,
+            textAlign: 'center',
+            fontSize: 30,
+            color: "#fff"
+          }}>Popular Menu Items: </Text>
+          <Text style={{
+            marginLeft: 30,
+            marginRight: 10,
+            flex: 1,
+            fontSize: 25,
+            color: "#fff"
+          }}>Falafel Wrap with Fresh Vegetables </Text>
+          <View style={{ flex: 0.3 }}></View>
+          <Text style={{
+            marginLeft: 30,
+            marginRight: 10,
+            flex: 1,
+            fontSize: 25,
+            color: "#fff"
+          }}>Falafel Bowl with Fresh Vegetables </Text>
+          <View style={{ flex: 0.3 }}></View>
+          <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
+            <View style={{ flex: 0.1 }}></View>
+            <Image style={styles.friendIcon}
+              source={require("./assets/icons8-meeting-room-100.png")} />
+            <Text style={{
+              flex: 2,
+              textAlign: 'center',
+              fontSize: 15,
+              color: "#fff",
+              alignSelf: "center",
+              textDecorationLine: 'underline'
+            }}>Liked by Roger and 8 others</Text>
+          </View>
+          <View style={{ flex: 0.2 }}></View>
+        </View>
+        <View style={{ flex: 0.4 }}></View>
+      </View>
+
+      <View style={{ flex: 0.6 }}>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <Image
+            style={styles.chooseIcons}
+            source={require("./assets/icons8-cancel-480.png")}
+            onPress={() => navigation.navigate('Restaurant')} />
+          <Image
+            style={styles.undoIcon}
+            source={require("./assets/icons8-undo-96.png")}
+            onPress={() => navigation.navigate('Restaurant')} />
+          <Image
+            style={styles.chooseIcons}
+            source={require("./assets/icons8-checkmark-480.png")}
+            onPress={() => navigation.navigate('Restaurant2')} />
+        </View>
+      </View>
+
+
+      <View style={{ flex: 0.5, justifyContent: "flex-end", backgroundColor: "#E3967E", flexDirection: "row" }}>
         <Image
           style={styles.homeBarIcons}
           source={require("./assets/icons8-country-house-100.png")}
@@ -353,6 +536,7 @@ export default function App() {
         <Stack.Screen name="Creation" component={AccountCreated} />
         <Stack.Screen name="Options" component={Options} />
         <Stack.Screen name="Restaurant" component={Restaurant} />
+        <Stack.Screen name="Restaurant2" component={Restaurant2} />
       </Stack.Navigator>
     </NavigationContainer >
   );
@@ -462,16 +646,36 @@ const styles = StyleSheet.create({
     fontSize: 35
   },
   homeBarIcons: {
-    height: 60,
+    height: 10,
     flex: 1,
     resizeMode: 'contain',
-    marginTop: 10,
-    marginBottom: 10,
-
+  },
+  homeBarTouch: {
+    flex: 1,
+    margin: 10,
+    height: 70,
+    alignItems: 'center',
   },
   healthIcon: {
     height: 35,
     flex: 1,
     resizeMode: 'contain',
+  },
+  friendIcon: {
+    height: 55,
+    flex: 0.5,
+    resizeMode: 'contain',
+  },
+  chooseIcons: {
+    flex: 1,
+    height: "70%",
+    resizeMode: 'contain',
+    alignSelf: 'center',
+  },
+  undoIcon: {
+    flex: 1,
+    height: "45%",
+    resizeMode: 'contain',
+    alignSelf: 'center',
   }
 })
