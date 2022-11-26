@@ -18,6 +18,10 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from '@react-navigation/native';
+import SelectDropdown from 'react-native-select-dropdown'
+import { ScreenStackHeaderLeftView } from "react-native-screens";
+
+
 
 
 function FriendProfile(props) {
@@ -238,12 +242,108 @@ function AccountCreated() {
     </View >
   )
 }
+
+function Options() {
+  const countries = ["Egypt", "Canada", "Australia", "Ireland"]
+  return (
+    <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }} >
+      <SelectDropdown
+        data={countries}
+        onSelect={(selectedItem, index) => {
+          console.log(selectedItem, index)
+        }}
+        buttonTextAfterSelection={(selectedItem, index) => {
+          // text represented after item is selected
+          // if data array is an array of objects then return selectedItem.property to render after item is selected
+          return selectedItem
+        }}
+        rowTextForSelection={(item, index) => {
+          // text represented for each item in dropdown
+          // if data array is an array of objects then return item.property to represent item in dropdown
+          return item
+        }}
+        style={{
+          marginTop: 50
+        }}
+      />
+    </SafeAreaView>
+  )
+}
+
+function Restaurant() {
+  return (
+    <View style={{ flex: 1, width: '100%', height: '100%' }}>
+      <View style={{ flex: 1 }} ></View>
+      <View
+        style={{ flex: 1, width: "90%", height: "50%", borderColor: "#000000", borderWidth: 5, alignSelf: "center", borderRadius: 15 }}>
+
+
+        <Text
+          style={styles.congrats}>The Pizza Press</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            flex: 1
+          }}>
+          <View
+            style={{
+              flexDirection: "row",
+              flex: 1,
+            }}>
+            <Image
+              style={styles.healthIcon}
+              source={require("./assets/icons8-no-gluten-100.png")}
+            />
+            <Image
+              style={styles.healthIcon}
+              source={require("./assets/icons8-vegetarian-mark-96.png")}
+            />
+          </View>
+          <View style={{ flex: 1 }}></View>
+          <Text style={{ color: "#000000", fontSize: 20, flex: 1.3 }}>9 minute Walk</Text>
+        </View>
+        <View>
+
+        </View>
+      </View>
+
+
+      <View style={{ flex: 1 }}></View>
+      <View style={{ flex: 1 }}></View>
+      <View style={{ flex: 1 }}></View>
+      <View style={{ flex: 1 }}></View>
+      <View style={{ flex: 1 }}></View>
+
+
+      <View style={{ flex: 1, justifyContent: "flex-end", backgroundColor: "#E3967E", flexDirection: "row" }}>
+        <Image
+          style={styles.homeBarIcons}
+          source={require("./assets/icons8-country-house-100.png")}
+        />
+        <Image
+          style={styles.homeBarIcons}
+          source={require("./assets/icons8-google-maps-old-500.png")}
+        />
+        <Image
+          style={styles.homeBarIcons}
+          source={require("./assets/icons8-friends-100.png")}
+        />
+        <Image
+          style={styles.homeBarIcons}
+          source={require("./assets/icons8-gear-100.png")}
+        />
+      </View>
+    </View >
+
+  )
+}
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Creation" screenOptions={{
+      <Stack.Navigator initialRouteName="Restaurant" screenOptions={{
         headerShown: false
       }}>
         <Stack.Screen name="Entry" component={EntryScreen} />
@@ -251,6 +351,8 @@ export default function App() {
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Creation" component={AccountCreated} />
+        <Stack.Screen name="Options" component={Options} />
+        <Stack.Screen name="Restaurant" component={Restaurant} />
       </Stack.Navigator>
     </NavigationContainer >
   );
@@ -358,5 +460,18 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     fontSize: 35
+  },
+  homeBarIcons: {
+    height: 60,
+    flex: 1,
+    resizeMode: 'contain',
+    marginTop: 10,
+    marginBottom: 10,
+
+  },
+  healthIcon: {
+    height: 35,
+    flex: 1,
+    resizeMode: 'contain',
   }
 })
