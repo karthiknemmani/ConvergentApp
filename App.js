@@ -752,6 +752,7 @@ function Map() {
 }
 
 function Allergies() {
+  const navigation = useNavigation();
   const dietary = [
     { label: "Nuts", value: "1" },
     { label: "Eggs", value: "2" },
@@ -811,11 +812,31 @@ function Allergies() {
           )}
         />
       </View>
+      <TouchableOpacity
+        style={[styles.accCreButton, styles.flexOne]}
+        onPress={() => navigation.navigate("Restrictions")}
+      >
+        <View
+          style={{
+            flex: 0.5,
+          }}
+        ></View>
+        <Text style={[styles.signUpButtonText, styles.flexOne, styles.font40]}>
+          {" "}
+          Continue
+        </Text>
+        <View
+          style={{
+            flex: 0.5,
+          }}
+        ></View>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
 
 function Restrictions() {
+  const navigation = useNavigation();
   const rest = [
     { label: "Vegan", value: "1" },
     { label: "Vegetarian", value: "2" },
@@ -846,7 +867,7 @@ function Restrictions() {
           padding: 15,
         }}
       >
-        Allergies
+        Restrictions
       </Text>
       <View style={styles.dropdownView}>
         <MultiSelect
@@ -902,8 +923,8 @@ export default function App() {
         <Stack.Screen name="Options" component={Options} />
         <Stack.Screen name="Restaurant" component={Restaurant} />
         <Stack.Screen name="Restaurant2" component={Restaurant2} />
-        <Stack.Screen name="Map" component={Map} />
-        <Stack.Screen name="Allergies" component={Allergies} /> */}
+        <Stack.Screen name="Map" component={Map} /> */}
+        <Stack.Screen name="Allergies" component={Allergies} />
         <Stack.Screen name="Restrictions" component={Restrictions} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -1072,7 +1093,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   selectedText: {
-    fontSize: 14,
+    fontSize: 16,
   },
   inputSearchStyle: {
     height: 40,
