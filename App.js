@@ -22,7 +22,7 @@ import SelectDropdown from "react-native-select-dropdown";
 import { ScreenStackHeaderLeftView } from "react-native-screens";
 import MapView from "react-native-maps";
 import { MultiSelect } from "react-native-element-dropdown";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import { Marker } from "react-native-maps";
 
 function FriendProfile(props) {
   const id = props.name;
@@ -133,7 +133,7 @@ function Login() {
         </View>
         <TouchableOpacity
           style={styles.signUpButton}
-          onPress={() => navigation.navigate("SignIn")}
+          onPress={() => navigation.navigate("Restaurant")}
         >
           <Text style={styles.signUpButtonText}> Continue</Text>
         </TouchableOpacity>
@@ -203,7 +203,7 @@ function SignIn() {
         </View>
         <TouchableOpacity
           style={styles.signUpButton}
-          onPress={() => navigation.navigate("Creation")}
+          onPress={() => navigation.navigate("Allergies")}
         >
           <Text style={styles.signUpButtonText}> Continue</Text>
         </TouchableOpacity>
@@ -217,14 +217,18 @@ function SignIn() {
           or continue with
         </Text>
         <View style={styles.horzContainer}>
-          <Image
-            style={styles.loginIcon}
-            source={require("./assets/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png")}
-          />
-          <Image
-            style={styles.loginIcon}
-            source={require("./assets/Facebook-logo-blue-circle-large-transparent-png.png")}
-          />
+          <TouchableOpacity>
+            <Image
+              style={styles.loginIcon}
+              source={require("./assets/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png")}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image
+              style={styles.loginIcon}
+              source={require("./assets/Facebook-logo-blue-circle-large-transparent-png.png")}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -467,13 +471,19 @@ function Restaurant() {
           flexDirection: "row",
         }}
       >
-        <TouchableOpacity style={styles.homeBarTouch}>
+        <TouchableOpacity
+          style={styles.homeBarTouch}
+          onPress={() => navigation.navigate("Restaurant")}
+        >
           <Image
             style={styles.homeBarIcons}
             source={require("./assets/icons8-country-house-100.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.homeBarTouch}>
+        <TouchableOpacity
+          style={styles.homeBarTouch}
+          onPress={() => navigation.navigate("Map")}
+        >
           <Image
             style={styles.homeBarIcons}
             source={require("./assets/icons8-google-maps-100.png")}
@@ -485,7 +495,10 @@ function Restaurant() {
             source={require("./assets/icons8-friends-100.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.homeBarTouch}>
+        <TouchableOpacity
+          style={styles.homeBarTouch}
+          onPress={() => navigation.navigate("Settings")}
+        >
           <Image
             style={styles.homeBarIcons}
             source={require("./assets/icons8-gear-100.png")}
@@ -652,13 +665,19 @@ function Restaurant2() {
           flexDirection: "row",
         }}
       >
-        <TouchableOpacity style={styles.homeBarTouch}>
+        <TouchableOpacity
+          style={styles.homeBarTouch}
+          onPress={() => navigation.navigate("Restaurant")}
+        >
           <Image
             style={styles.homeBarIcons}
             source={require("./assets/icons8-country-house-100.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.homeBarTouch}>
+        <TouchableOpacity
+          style={styles.homeBarTouch}
+          onPress={() => navigation.navigate("Map")}
+        >
           <Image
             style={styles.homeBarIcons}
             source={require("./assets/icons8-google-maps-100.png")}
@@ -714,6 +733,7 @@ function Map() {
         />
         <View style={{ flex: 4 }}></View>
       </View>
+      {/* map portion */}
       <View style={{ flex: 3, width: "100%", height: "100%" }}>
         <MapView
           style={{ flex: 1 }}
@@ -724,7 +744,18 @@ function Map() {
             longitudeDelta: 0.0421,
           }}
           showsUserLocation={true}
-        />
+        >
+          <Marker
+            coordinate={{ latitude: 30.2907, longitude: -97.74201 }}
+            image={require("./assets/icons8-location-48.png")}
+            title="The Pizza Press"
+          />
+          <Marker
+            coordinate={{ latitude: 30.28341, longitude: -97.74072 }}
+            image={require("./assets/icons8-location-48.png")}
+            title="Gyrodelicious"
+          />
+        </MapView>
       </View>
       <View style={{ flex: 0.75 }}></View>
       <View style={{ flex: 2, flexDirection: "row" }}>
@@ -745,8 +776,45 @@ function Map() {
           source={require("./assets/icons8-cycling-100.png")}
         />
       </View>
-
-      <View style={{ flex: 0.75 }}></View>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "flex-end",
+          backgroundColor: "#E3967E",
+          flexDirection: "row",
+        }}
+      >
+        <TouchableOpacity
+          style={styles.homeBarTouch}
+          onPress={() => navigation.navigate("Restaurant")}
+        >
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-country-house-100.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.homeBarTouch}
+          onPress={() => navigation.navigate("Map")}
+        >
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-google-maps-100.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.homeBarTouch}>
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-friends-100.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.homeBarTouch}>
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-gear-100.png")}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -759,7 +827,6 @@ function Allergies() {
     { label: "Dairy", value: "3" },
     { label: "Soy", value: "4" },
     { label: "Fish", value: "5" },
-    { label: "Other", value: "6" },
   ];
   const [selected, setSelected] = React.useState([]);
 
@@ -896,7 +963,94 @@ function Restrictions() {
           )}
         />
       </View>
+      <TouchableOpacity
+        style={[styles.accCreButton, styles.flexOne]}
+        onPress={() => navigation.navigate("Creation")}
+      >
+        <View
+          style={{
+            flex: 0.5,
+          }}
+        ></View>
+        <Text style={[styles.signUpButtonText, styles.flexOne, styles.font40]}>
+          {" "}
+          Continue
+        </Text>
+        <View
+          style={{
+            flex: 0.5,
+          }}
+        ></View>
+      </TouchableOpacity>
     </SafeAreaView>
+  );
+}
+
+function Settings() {
+  const navigation = useNavigation();
+  return (
+    <View style={{ flex: 1, width: "100%", height: "100%" }}>
+      <Text
+        style={{
+          color: "#000000",
+          flex: 0.85,
+          fontSize: 40,
+          alignSelf: "flex-start",
+          marginTop: 50,
+          padding: 15,
+        }}
+      >
+        Settings
+      </Text>
+      <TouchableOpacity
+        style={styles.signUpButton}
+        onPress={() => navigation.navigate("Entry")}
+      >
+        <Text style={styles.signUpButtonText}> Sign Out</Text>
+      </TouchableOpacity>
+      <View
+        style={{
+          flex: 0.2,
+          justifyContent: "flex-end",
+          backgroundColor: "#E3967E",
+          flexDirection: "row",
+        }}
+      >
+        <TouchableOpacity
+          style={styles.homeBarTouch}
+          onPress={() => navigation.navigate("Restaurant")}
+        >
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-country-house-100.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.homeBarTouch}
+          onPress={() => navigation.navigate("Map")}
+        >
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-google-maps-100.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.homeBarTouch}>
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-friends-100.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.homeBarTouch}
+          onPress={() => navigation.navigate("Settings")}
+        >
+          <Image
+            style={styles.homeBarIcons}
+            source={require("./assets/icons8-gear-100.png")}
+          />
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
@@ -911,7 +1065,7 @@ export default function App() {
           headerShown: false,
         }}
       >
-        {/* <Stack.Screen name="Entry" component={EntryScreen} />
+        <Stack.Screen name="Entry" component={EntryScreen} />
         <Stack.Screen
           name="Friends"
           component={Friends}
@@ -923,9 +1077,10 @@ export default function App() {
         <Stack.Screen name="Options" component={Options} />
         <Stack.Screen name="Restaurant" component={Restaurant} />
         <Stack.Screen name="Restaurant2" component={Restaurant2} />
-        <Stack.Screen name="Map" component={Map} /> */}
+        <Stack.Screen name="Map" component={Map} />
         <Stack.Screen name="Allergies" component={Allergies} />
         <Stack.Screen name="Restrictions" component={Restrictions} />
+        <Stack.Screen name="Settings" component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -1093,7 +1248,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   selectedText: {
-    fontSize: 16,
+    fontSize: 14,
   },
   inputSearchStyle: {
     height: 40,
