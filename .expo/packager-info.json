@@ -1,9 +1,9 @@
 {
-  "expoServerNgrokUrl": "https://7m-mhx.anonymous.convergentapp.exp.direct",
-  "packagerNgrokUrl": "https://7m-mhx.anonymous.convergentapp.exp.direct",
-  "ngrokPid": 25104,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "expoServerPort": null,
-  "packagerPort": 19001,
+  "packagerPort": null,
   "packagerPid": null,
   "webpackServerPort": null
 }

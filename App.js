@@ -23,6 +23,7 @@ import { ScreenStackHeaderLeftView } from "react-native-screens";
 import MapView from "react-native-maps";
 import { MultiSelect } from "react-native-element-dropdown";
 import { Marker } from "react-native-maps";
+import { setSyntheticLeadingComments } from "typescript";
 
 function FriendProfile(props) {
   const id = props.name;
@@ -858,14 +859,12 @@ function Allergies() {
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
           inputSearchStyle={styles.inputSearchStyle}
-          iconStyle={styles.iconStyle}
           data={dietary}
           labelField="label"
           valueField="value"
           placeholder="Select allergies"
           value={selected}
-          search
-          searchPlaceholder="Find allergies or select other"
+          activeColor="#E3967E"
           onChange={(item) => {
             setSelected(item);
           }}
@@ -894,7 +893,7 @@ function Allergies() {
         </Text>
         <View
           style={{
-            flex: 0.5,
+            flex: 0.4,
           }}
         ></View>
       </TouchableOpacity>
@@ -947,6 +946,7 @@ function Restrictions() {
           labelField="label"
           valueField="value"
           placeholder="Select restrictions"
+          activeColor="#E3967E"
           value={selected}
           search
           searchPlaceholder="Find restrictions or select other"
@@ -1247,16 +1247,22 @@ const styles = StyleSheet.create({
   placeholderStyle: {
     fontSize: 30,
   },
-  selectedText: {
-    fontSize: 14,
+  dropdownElements: {
+    fontSize: 20,
+  },
+
+  selectedTextStyle: {
+    color: "#000000",
+    fontSize: 30,
+    padding: 15,
   },
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
   },
-  inputSearchStyle: {
-    height: 40,
-    fontSize: 16,
+  iconStyle: {
+    width: 20,
+    height: 20,
   },
   selectedStyle: {
     flexDirection: "row",
